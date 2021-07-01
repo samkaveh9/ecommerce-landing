@@ -7,9 +7,9 @@
       <div class="navbar">
         <div class="navbar__row">
           <div class="header__logo">
-            <a href="index.html" class="header__logo-img"></a>
+            <router-link :to="{ name: 'Home' }" class="header__logo-img"></router-link>
           </div>
-          <div class="navbar__items">
+          <div class="navbar__items" :class="{ 'navbar__items--is-active': showSideBar }">
             <ul class="navbar__ul">
               <li class="navbar__item">
                 <a href="" class="navbar__link navbar__link--is-active"
@@ -105,13 +105,14 @@
                 </div>
               </div>
             </div>
+            <div class="header__menu" @click="toggleSideBar"></div>
           </div>
         </div>
       </div>
       <div class="header__top">
         <div class="header__top-content">
-          <h1 class="header__top-h1">وب آموز : پلی برای یادگیری</h1>
-          <p class="header__top-p">با کمترین هزینه حرفه ای شو</p>
+          <h1 class="header__top-h1">کیفیت شعار ماست</h1>
+          <p class="header__top-p">تضمین بازگشت وجه در صورت نارضایتی مشتری</p>
         </div>
         <form class="header__form">
           <div class="header__search">
@@ -135,6 +136,7 @@ export default {
   data: () => ({
     isBasketDisplayed: false,
     isAccountDisplayed: false,
+    showSideBar: false
   }),
 
   methods: {
@@ -154,6 +156,10 @@ export default {
         this.isBasketDisplayed = false;
       }
     },
+
+     toggleSideBar(){
+      this.showSideBar = !this.showSideBar
+    }
   },
 
   mounted() {
